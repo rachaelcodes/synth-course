@@ -1,0 +1,26 @@
+<body>
+    <div
+        style="background:black; height: 500px;"
+        onmousemove="osc.frequency.value= event.clientY;"
+    >
+        
+    </div>
+</body>
+
+<script>
+   
+   
+    var audio_context = window.AudioContext || window.webkitAudioContext;
+    //web accessible 
+    var con = new audio_context();
+    //create audio context
+    var osc = con.createOscillator();
+    //create oscillator
+    osc.connect(con.destination);
+    //make the sound
+    osc.frequency.value = 150;
+    //gives pitch
+    //osc.start();
+    //uncomment the above to get it working
+    
+</script>
