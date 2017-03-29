@@ -1,0 +1,66 @@
+<body>
+    <div
+        style="background:black; height: 100%; color:white;"
+        tabindex="1"
+        onkeydown="setNote(event.key)"
+    >
+        <h2>
+        Your note is: <span id="note"></span>
+        </h2>
+    </div>
+</body>
+
+<script>
+   
+   
+    var audio_context = window.AudioContext || window.webkitAudioContext;
+    //web accessible 
+    var con = new audio_context();
+    //create audio context
+    var osc = con.createOscillator();
+    //create oscillator
+    osc.connect(con.destination);
+    //make the sound
+    osc.frequency.value = 180;
+    //gives pitch
+    osc.start();
+    //uncomment the above to get it working
+    
+    function setNote(key){
+       if (key== "z") {
+           //play c
+        osc.frequency.value = 130.81;
+        document.getElementById("note").textContent = "C";
+       }
+       if (key== "x") {
+           //play d
+        osc.frequency.value = 146.83;
+        document.getElementById("note").textContent = "D";
+       }
+       if (key== "c") {
+           //play e
+        osc.frequency.value = 164.81;
+        document.getElementById("note").textContent = "E";
+       }
+       if (key== "v") {
+           //play f
+        osc.frequency.value = 174.61;
+        document.getElementById("note").textContent = "F";
+       }
+       if (key== "b") {
+           //play g
+        osc.frequency.value = 196.00;
+        document.getElementById("note").textContent = "G";
+       }
+       if (key== "n") {
+           //play a
+        osc.frequency.value = 220.00;
+        document.getElementById("note").textContent = "A";
+       }
+       if (key== "m") {
+           //play b
+        osc.frequency.value = 246.94;
+        document.getElementById("note").textContent = "B";
+       }
+    }
+</script>

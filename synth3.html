@@ -1,0 +1,33 @@
+<body>
+    <div
+        style="background:black; height:100%"
+        onmousemove="lfo.frequency.value = event.clientX"
+    >
+        
+    </div>
+</body>
+
+<script>
+    var audio_context = window.AudioContext || window.webkitAudioContext;
+    
+    var con = new audio_context();
+    
+    var osc = con.createOscillator();
+    var lfo = con.createOscillator();
+    
+    var lfo_amp = con.createGain();
+    //gain node - an amplifier
+    
+    osc.frequency.value = 300;
+    lfo.frequency.value = 25;
+    //make higher to create analogue-synth style modulation (wobbling)
+    lfo_amp.gain.value = 200;
+    
+    lfo.connect(lfo_amp);
+    //lfo output connects to the gain
+    lfo_amp.connect(osc.frequency);
+    osc.connect(con.destination);
+    //oscilator output connects to the audio context
+    //osc.start();
+    lfo.start();
+</script>

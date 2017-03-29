@@ -1,0 +1,45 @@
+<body>
+    <div
+        style="background:black; height: 500px;"
+        tabindex="1"
+        onkeydown="setNote(event.key)"
+    >
+        
+    </div>
+</body>
+
+<script>
+   
+   
+    var audio_context = window.AudioContext || window.webkitAudioContext;
+    //web accessible 
+    var con = new audio_context();
+    //create audio context
+    var osc = con.createOscillator();
+    //create oscillator
+    osc.connect(con.destination);
+    //make the sound
+    osc.frequency.value = 180;
+    //gives pitch
+    //osc.start();
+    //uncomment the above to get it working
+    
+    function setNote(key){
+       if (key== "z") {
+           //play c
+        osc.frequency.value = 261.63;
+       }
+       if (key== "x") {
+           //play d
+        osc.frequency.value = 293.66;
+       }
+       if (key== "c") {
+           //play e
+        osc.frequency.value = 329.63;
+       }
+       if (key== "v") {
+           //play f
+        osc.frequency.value = 349.23;
+       }
+    }
+</script>
